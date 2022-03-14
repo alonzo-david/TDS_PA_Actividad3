@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            padding: 20px;
+            font-size: 1.5rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .title{
+            font-weight: bold;
+            font-size: 1.6rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenido">
+
+    </div>
+    <div>
+        <form id="form-fecha">
+            <label class="title">Consultar el clima y temperatura de una fecha</label>
+            <input type="date" id="fecha" required />
+            <input type="submit" value="Consultar" />
+        </form>
+    </div>
+    <div id="resultado-fecha">
+        <label id="fecha-r"></label> <br />
+        <label id="temperatura-r"></label> <br />
+        <label id="clima-r"></label> <br />
+    </div>
+
+
+    <div>
+        <form id="form-hoy">
+            <label class="title">Consultar el clima y temperatura de hoy</label>
+            <input type="submit" value="Consultar" />
+        </form>
+    </div>
+    <div id="resultado-hoy">
+        <label id="fecha-h"></label> <br />
+        <label id="temperatura-h"></label> <br />
+        <label id="clima-h"></label> <br />
+    </div>
+
+
+    <script>
+
+        let form_fecha = document.getElementById('form-fecha');
+        let form_hoy = document.getElementById('form-hoy');
+
+                
+        let fecha_r = document.getElementById('fecha-r');
+        let temperatura_r = document.getElementById('temperatura-r');
+        let clima_r = document.getElementById('clima-r');
+
+        let fecha_h = document.getElementById('fecha-h');
+        let temperatura_h = document.getElementById('temperatura-h');
+        let clima_h = document.getElementById('clima-h');
+
+        form_fecha.addEventListener('submit', function(evento){
+            evento.preventDefault();   
+
+            let temperatura = getRandomNumber(5,30);
+            let clima = getClima(getRandomNumber(1,3));
+            let tiempo = Math.floor((Math.random()) * 2000);
+            let fecha_seleccionada = document.getElementById('fecha').value;
+            
+            setTimeout(datosFecha, tiempo, temperatura, clima, fecha_seleccionada);        
+
+            function datosFecha(temp, clim, fecha){
+                fecha_h.innerText = '';
+                temperatura_h.innerText = '';
+                clima_h.innerText = '';
+
+                fecha_r.innerText = 'Los datos del clima y de la temperatura de la fecha ' + fecha;
+                temperatura_r.innerText = 'Temperatura: ' + temp + ' celcius';
+                clima_r.innerText = 'Clima: ' + clim;
+            }
+
+        });
+
+        form_hoy.addEventListener('submit', function(evento){
+            evento.preventDefault();            
+
+            let temperatura = getRandomNumber(5,30);
+            let clima = getClima(getRandomNumber(1,3));
+            let tiempo = Math.floor((Math.random()) * 2000);
+            setTimeout(datosHoy, tiempo, temperatura, clima); 
+
+            function datosHoy(temp, clim){
+                fecha_r.innerText = '';
+                temperatura_r.innerText = '';
+                clima_r.innerText = '';
+
+                fecha_h.innerText = 'Los datos del clima y de la temperatura del dia de hoy';
+                temperatura_h.innerText = 'Temperatura: ' + temp + ' celcius';
+                clima_h.innerText = 'Clima: ' + clim;
+            }
+        });
+
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+
+        function getClima(value){
+            let clima = "";
+            
+            switch (value) {
+                case 1:
+                    clima = "Despejado";
+                    break;
+                case 2:
+                    clima = "Nublado";
+                    break;
+                case 3:
+                    clima = "Lluvioso";
+                    break;
+                default:
+                    break;
+            }
+
+            return clima;
+        }
+
+    </script>
+</body>
+</html>
