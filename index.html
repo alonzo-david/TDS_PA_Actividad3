@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 3</title>
+    <link rel="stylesheet" href="./index.css"/>
+</head>
+<body>
+    <div id="contenido">
+
+    </div>
+    <div>
+        <form id="form-fecha">
+            <label class="title">Consultar el clima y temperatura de una fecha</label>
+            <input type="date" id="fecha" required />
+            <input type="submit" value="Consultar" />
+        </form>
+    </div>
+    <div id="resultado-fecha">
+        <label id="fecha-r"></label> <br /><br />
+        <label id="temperatura-r"></label> <br />
+        <label id="clima-r"></label> <br />
+    </div>
+
+
+    <div>
+        <form id="form-hoy">
+            <label class="title">Consultar el clima y temperatura de hoy</label>
+            <input type="submit" value="Consultar" />
+        </form>
+    </div>
+    <div id="resultado-hoy">
+        <label id="fecha-h"></label> <br /><br />
+        <label id="temperatura-h"></label> <br />
+        <label id="clima-h"></label> <br />
+    </div>
+
+
+    <script type="text/javascript" src="index.js">
+    </script>
+</body>
+</html>
