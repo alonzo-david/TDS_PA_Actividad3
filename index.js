@@ -17,8 +17,8 @@ let form_fecha = document.getElementById('form-fecha');
         form_fecha.addEventListener('submit', function(evento){
             evento.preventDefault();   
 
-            let temperatura = getRandomNumber(5,30);
-            let clima = getClima(getRandomNumber(1,3));
+            let temperatura = getRandomNumber(5,31);
+            let clima = getClima(getRandomNumber(1,4));
             let tiempo = Math.floor((Math.random()) * 2000);
             let fecha_seleccionada = document.getElementById('fecha').value;
             
